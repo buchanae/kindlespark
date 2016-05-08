@@ -7,6 +7,7 @@ import (
   "text/template"
   "os"
   "path"
+  "strings"
   "github.com/PuerkitoBio/goquery"
 )
 
@@ -60,7 +61,7 @@ func main() {
   for idx, href := range sectionHrefs {
     sectionDoc, _ := goquery.NewDocument(baseUrl + href)
     section := parseSection(sectionDoc)
-    section.Filename = href
+    section.Filename = strings.Replace(href, ".rhtml", ".html", 1)
     section.Index = idx
     sections = append(sections, section)
   }
@@ -245,14 +246,14 @@ var OPF_TPL, _ = template.New("OPF_TPL").Parse(`
   </metadata>
 
   <manifest>
-    <item id="item-1" media-type="application/xhtml+xml" href="toc.html"></item>
+    <item id="toc" media-type="application/xhtml+xml" href="toc.html"></item>
     {{.ManifestSections}}
 
-    <item id="My_Table_of_Contents" media-type="application/x-dtbncx+xml" href="toc.ncx"/>
+    <item id="toc-ncx" media-type="application/x-dtbncx+xml" href="toc.ncx"/>
   </manifest>
 
-  <spine toc="My_Table_of_Contents">
-    <itemref idref="item-1"/>
+  <spine toc="toc-ncx">
+    <itemref idref="toc"/>
     {{.SpineSections}}
 
   </spine>
