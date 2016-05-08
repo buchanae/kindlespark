@@ -2,12 +2,12 @@ package main
 
 import (
   "bytes"
-  // "fmt"
+  "fmt"
   "log"
-  "text/template"
   "os"
   "path"
   "strings"
+  "text/template"
   "github.com/PuerkitoBio/goquery"
 )
 
@@ -46,7 +46,13 @@ type Output struct {
 
 
 func main() {
-  name := "gatsby"
+
+  if len(os.Args) != 2 {
+    fmt.Println("Usage: kindlespark <book name>")
+    return
+  }
+
+  name := os.Args[1]
   baseUrl := "http://www.sparknotes.com/lit/" + name + "/"
   doc, err := goquery.NewDocument(baseUrl)
 
@@ -68,6 +74,8 @@ func main() {
 
   output := buildOutput(bookMeta, sections)
   writeOutput(name, output)
+
+  fmt.Printf("Ebook content written to the \"%s\" directory. Now run: ./kindlegen %s/%s.opf\n", name, name, name)
 }
 
 func parseBookMeta(doc *goquery.Document) BookMeta {
