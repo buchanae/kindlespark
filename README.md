@@ -7,13 +7,21 @@ and uses Amazon's [KindleGen](http://www.amazon.com/gp/feature.html?docId=100076
 
 This was inspired by [this Reddit post](http://www.reddit.com/r/kindle/comments/g7l2h/sparknotes_for_kindle/).
 
-# Usage
-
-These programs require you to use the command line. These instructions assume you are familiar with that environment. If not, sorry, I'll try to make this simpler at some point.
+# Download
 
 First, you need to download [KindleGen](http://www.amazon.com/gp/feature.html?docId=1000765211).
 
-Next, download a release of kindlespark.
+Next, download a release of kindlespark:
+
+- [Windows](https://github.com/abuchanan/kindlespark/releases/download/2.0.0/kindlespark-win-amd64)
+- [Mac](https://github.com/abuchanan/kindlespark/releases/download/2.0.0/kindlespark-mac)
+- [Linux](https://github.com/abuchanan/kindlespark/releases/download/2.0.0/kindlespark-linux-amd64)
+
+(Note, I have only tested this on Mac 10.10 so far!)
+
+# Usage
+
+These programs require you to use the command line. These instructions assume you are familiar with that environment. If you're not, sorry, I'll try to make this simpler at some point.
 
 Find the SparkNotes URL you want to convert, for example: http://www.sparknotes.com/lit/gatsby/
 
@@ -21,4 +29,4 @@ Run `./kindlespark gatsby`
 
 Run `./kindlegen ./gatsby/gatsby.opf`
 
-Upload ./gatsby/gatsby.mobi to your Kindle.
+Upload `./gatsby/gatsby.mobi` to your Kindle.
