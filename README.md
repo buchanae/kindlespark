@@ -1,26 +1,24 @@
 # kindlespark
 
-kindlespark can generate [SparkNotes](http://www.sparknotes.com/lit/gatsby/) in Kindle format.
+kindlespark can generate [SparkNotes](http://www.sparknotes.com/) ebooks for Kindle.
 
 More technically, it scrapes the SparkNotes website, does some basic formatting,
-and uses Amazon's KindleGen to generate a .mobi file.
+and uses Amazon's [KindleGen](http://www.amazon.com/gp/feature.html?docId=1000765211) to generate a .mobi file.
 
 This was inspired by [this Reddit post](http://www.reddit.com/r/kindle/comments/g7l2h/sparknotes_for_kindle/).
 
-# Prerequisites
-
-First, you need to download [KindleGen](http://www.amazon.com/gp/feature.html?docId=1000765211).
-Unzip this into the kindlespark directory (or otherwise link the kindlegen executable there).
-
-You'll need python 2.7 and you'll need to install [scrapy](http://scrapy.org/).
-
 # Usage
 
-```python kindlespark.py http://www.sparknotes.com/lit/gatsby/```
+These programs require you to use the command line. These instructions assume you are familiar with that environment. If not, sorry, I'll try to make this simpler at some point.
 
-# Known Issues
+First, you need to download [KindleGen](http://www.amazon.com/gp/feature.html?docId=1000765211).
 
-Disclaimer: I whipped this up in a couple hours. There are parts that are very obviously bad.
+Next, download a release of kindlespark.
 
-Currently, this doesn't scrape the chapter/section analysis. Those are multiple pages, and rhtml,
-and they didn't "just work". I'll fix that at some point though.
+Find the SparkNotes URL you want to convert, for example: http://www.sparknotes.com/lit/gatsby/
+
+Run `./kindlespark gatsby`
+
+Run `./kindlegen ./gatsby/gatsby.opf`
+
+Upload ./gatsby/gatsby.mobi to your Kindle.
