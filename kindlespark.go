@@ -47,14 +47,14 @@ type Output struct {
 
 func main() {
 
-  if len(os.Args) != 2 {
-    fmt.Println("Usage: kindlespark <book name>")
+  if len(os.Args) != 3 {
+    fmt.Println("Usage: kindlespark <name> <sparknotes URL>")
     return
   }
 
   name := os.Args[1]
-  baseUrl := "http://www.sparknotes.com/lit/" + name + "/"
-  doc, err := goquery.NewDocument(baseUrl)
+  url := os.Args[2]
+  doc, err := goquery.NewDocument(url)
 
   if err != nil {
     log.Fatal(err)
@@ -65,7 +65,7 @@ func main() {
   var sections []Section
 
   for idx, href := range sectionHrefs {
-    sectionDoc, _ := goquery.NewDocument(baseUrl + href)
+    sectionDoc, _ := goquery.NewDocument(url + href)
     section := parseSection(sectionDoc)
     section.Filename = strings.Replace(href, ".rhtml", ".html", 1)
     section.Index = idx

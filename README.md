@@ -25,8 +25,14 @@ These programs require you to use the command line. These instructions assume yo
 
 Find the SparkNotes URL you want to convert, for example: http://www.sparknotes.com/lit/gatsby/
 
-Run `./kindlespark gatsby`
+Run `./kindlespark gatsby http://www.sparknotes.com/lit/gatsby/`
 
 Run `./kindlegen ./gatsby/gatsby.opf`
 
 Upload `./gatsby/gatsby.mobi` to your Kindle.
+
+# Build
+
+```
+GOPATH=`pwd`/gopackages/ go build kindlespark.go
+```
